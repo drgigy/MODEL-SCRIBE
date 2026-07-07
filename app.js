@@ -295,6 +295,38 @@ function discardRecording() {
   renderWorkspace();
 }
 
+function isTypingTarget(target) {
+  const tagName = target?.tagName?.toLowerCase();
+  return (
+    tagName === "input" ||
+    tagName === "textarea" ||
+    tagName === "select" ||
+    tagName === "button" ||
+    target?.isContentEditable
+  );
+}
+
+function handleRecordingHotkeys(event) {
+  if (state.view !== "workspace" || isTypingTarget(event.target)) return;
+
+  if (event.code === "Space") {
+    event.preventDefault();
+    if (!state.recorder || state.recorder.state === "inactive") {
+      startRecording();
+    } else {
+      togglePause();
+    }
+    return;
+  }
+
+  if (event.key === "Enter") {
+    event.preventDefault();
+    if (state.recorder && state.recorder.state !== "inactive") {
+      stopRecording();
+    }
+  }
+}
+
 function cleanupMedia() {
   stopTimer();
   stopVisualizer();
@@ -661,5 +693,6 @@ saveSettingsButton.addEventListener("click", () => {
   localStorage.setItem("mosc_gemini_api_key", state.apiKey);
   settingsPanel.classList.add("hidden");
 });
+document.addEventListener("keydown", handleRecordingHotkeys);
 
 render();
