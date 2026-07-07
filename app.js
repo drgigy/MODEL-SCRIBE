@@ -156,7 +156,7 @@ function render() {
   accuracyToggle.classList.toggle("active", state.highAccuracy);
   apiKeyInput.value = state.apiKey;
   backButton.classList.toggle("hidden", state.view === "dashboard");
-  modelLabel.textContent = `Model: ${state.highAccuracy ? "Gemini-3-Pro-Preview" : "Gemini-2.5-Flash"}`;
+  if (modelLabel) modelLabel.textContent = `Model: ${state.highAccuracy ? "Gemini-3-Pro-Preview" : "Gemini-2.5-Flash"}`;
 
   if (state.view === "dashboard") renderDashboard();
   if (state.view === "workspace") renderWorkspace();
@@ -455,7 +455,7 @@ function renderResult() {
   renderSections();
   document.getElementById("copyAllButton").addEventListener("click", () => copyReport(false));
   document.getElementById("copyNoNilButton").addEventListener("click", () => copyReport(true));
-  modelLabel.textContent = `Model: ${state.modelUsed || (state.highAccuracy ? "Gemini-3-Pro-Preview" : "Gemini-2.5-Flash")}`;
+  if (modelLabel) modelLabel.textContent = `Model: ${state.modelUsed || (state.highAccuracy ? "Gemini-3-Pro-Preview" : "Gemini-2.5-Flash")}`;
 }
 
 function sectionDefinitions() {
