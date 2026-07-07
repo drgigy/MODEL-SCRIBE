@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOSC AI Scribe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <button id="backButton" class="back-button hidden" type="button" aria-label="Main Dashboard">
+          <span aria-hidden="true">‹</span>
+          <span>Main Dashboard</span>
+        </button>
+        <button id="brandButton" class="brand" type="button">
+          <span class="brand-icon" aria-hidden="true">⚕</span>
+          <span>MOSC AI Scribe for OPD</span>
+        </button>
+      </header>
+
+      <main id="main" class="main"></main>
+
+      <footer class="footer">
+        <p>Developed by the Medical Superintendents Office, MOSC Medical College Hospital, Kolenchery</p>
+        <div id="modelLabel" class="model-label">Model: Gemini-2.5-Flash</div>
+      </footer>
+
+      <section id="settingsPanel" class="settings-panel hidden" aria-label="Settings">
+        <h2>Settings</h2>
+        <label class="field">
+          <span>Gemini API Key</span>
+          <input id="apiKeyInput" type="password" placeholder="Paste your Gemini API key" autocomplete="off" />
+        </label>
+        <div class="row">
+          <span>Dark Mode</span>
+          <button id="darkToggle" class="switch" type="button" aria-label="Toggle dark mode"><span></span></button>
+        </div>
+        <div class="row">
+          <span>High Accuracy Mode</span>
+          <button id="accuracyToggle" class="switch" type="button" aria-label="Toggle high accuracy mode"><span></span></button>
+        </div>
+        <p class="notice">Uses Gemini 3 Pro. More accurate, but may take longer to process.</p>
+        <button id="saveSettingsButton" class="primary small" type="button">Save Settings</button>
+      </section>
+
+      <button id="settingsButton" class="settings-button" type="button" title="Settings" aria-label="Settings">⚙</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
