@@ -60,7 +60,7 @@ Required Fields:
 2. History of Present Illness
 3. Past Medical History
 4. Current Medication
-5. Review of Investigations
+5. Review of Investigations: include blood investigations with exact values and units as dictated (for example Hb g/dL, WBC cells/cumm, platelet count /cumm, creatinine mg/dL, electrolytes mmol/L). Do not omit units.
 6. Family History
 7. Personal history
 8. Developmental History (Pediatric only, else "NIL")
@@ -101,7 +101,7 @@ const schemas = {
       historyOfPresentIllness: { type: Type.STRING, description: "History of Present Illness" },
       pastMedicalHistory: { type: Type.STRING, description: "Past Medical History" },
       currentMedication: { type: Type.STRING, description: "Current medications the patient is already taking. Set to NIL if not mentioned." },
-      reviewOfInvestigations: { type: Type.STRING, description: "Review of available investigations, lab results, imaging, or reports. Set to NIL if not mentioned." },
+      reviewOfInvestigations: { type: Type.STRING, description: "Review of available investigations, lab results, imaging, or reports. For blood investigations, preserve exact values and units as dictated; do not omit units. Set to NIL if not mentioned." },
       familyHistory: { type: Type.STRING, description: "Family History" },
       personalHistory: { type: Type.STRING, description: "Personal history" },
       developmentalHistory: { type: Type.STRING, description: "Developmental History (pediatric cases only, else NIL)" },
