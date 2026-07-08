@@ -59,15 +59,17 @@ Required Fields:
 1. Chief Complaint and duration
 2. History of Present Illness
 3. Past Medical History
-4. Family History
-5. Personal history
-6. Developmental History (Pediatric only, else "NIL")
-7. Vaccination History (Pediatric only, else "NIL")
-8. General Examination Findings
-9. Mental Status Examination (Psychiatry only, else "NIL")
-10. Systemic Examination Findings
-11. Provisional Diagnosis
-12. Treatment Plan`,
+4. Current Medication
+5. Review of Investigations
+6. Family History
+7. Personal history
+8. Developmental History (Pediatric only, else "NIL")
+9. Vaccination History (Pediatric only, else "NIL")
+10. General Examination Findings
+11. Mental Status Examination (Psychiatry only, else "NIL")
+12. Systemic Examination Findings
+13. Provisional Diagnosis
+14. Treatment Plan`,
   followupNormal: `You are an expert AI Medical Scribe for an Outpatient Department (OPD) specializing in Follow-up patient visits.
 Input: Audio recording of a doctor dictating clinical progress, exam findings, current complaints, and treatments.
 
@@ -98,6 +100,8 @@ const schemas = {
       chiefComplaint: { type: Type.STRING, description: "Chief Complaint and duration" },
       historyOfPresentIllness: { type: Type.STRING, description: "History of Present Illness" },
       pastMedicalHistory: { type: Type.STRING, description: "Past Medical History" },
+      currentMedication: { type: Type.STRING, description: "Current medications the patient is already taking. Set to NIL if not mentioned." },
+      reviewOfInvestigations: { type: Type.STRING, description: "Review of available investigations, lab results, imaging, or reports. Set to NIL if not mentioned." },
       familyHistory: { type: Type.STRING, description: "Family History" },
       personalHistory: { type: Type.STRING, description: "Personal history" },
       developmentalHistory: { type: Type.STRING, description: "Developmental History (pediatric cases only, else NIL)" },
@@ -112,6 +116,8 @@ const schemas = {
       "chiefComplaint",
       "historyOfPresentIllness",
       "pastMedicalHistory",
+      "currentMedication",
+      "reviewOfInvestigations",
       "familyHistory",
       "personalHistory",
       "developmentalHistory",
@@ -501,15 +507,17 @@ function sectionDefinitions() {
     ["chiefComplaint", "1. PRESENTING COMPLAINT", true],
     ["historyOfPresentIllness", "2. HISTORY OF PRESENT ILLNESS", true],
     ["pastMedicalHistory", "3. PAST MEDICAL HISTORY", false],
-    ["familyHistory", "4. FAMILY HISTORY", false],
-    ["personalHistory", "5. PERSONAL HISTORY", false],
-    ["developmentalHistory", "6. DEVELOPMENTAL HISTORY", false],
-    ["vaccinationHistory", "7. VACCINATION HISTORY", false],
-    ["generalExamination", "8. GENERAL EXAMINATION", false],
-    ["mentalStatusExamination", "9. MENTAL STATUS EXAMINATION", true],
-    ["systemicExamination", "10. SYSTEMIC EXAMINATION", true],
-    ["provisionalDiagnosis", "11. PROVISIONAL DIAGNOSIS", true],
-    ["treatmentPlan", "12. TREATMENT PLAN", true],
+    ["currentMedication", "4. CURRENT MEDICATION", false],
+    ["reviewOfInvestigations", "5. REVIEW OF INVESTIGATIONS", false],
+    ["familyHistory", "6. FAMILY HISTORY", false],
+    ["personalHistory", "7. PERSONAL HISTORY", false],
+    ["developmentalHistory", "8. DEVELOPMENTAL HISTORY", false],
+    ["vaccinationHistory", "9. VACCINATION HISTORY", false],
+    ["generalExamination", "10. GENERAL EXAMINATION", false],
+    ["mentalStatusExamination", "11. MENTAL STATUS EXAMINATION", true],
+    ["systemicExamination", "12. SYSTEMIC EXAMINATION", true],
+    ["provisionalDiagnosis", "13. PROVISIONAL DIAGNOSIS", true],
+    ["treatmentPlan", "14. TREATMENT PLAN", true],
   ];
 }
 
